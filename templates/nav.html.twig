@@ -1,0 +1,36 @@
+{# <ul>
+    <li><a href="/home">MySymfonyApp</a></li>
+    <li><a href="/lucky">Lucky</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/article">Article <a/></li>
+        <ul>
+            <li><a href="/article/generate">Generate <a/></li>
+            <li><a href="/article/list">list <a/></li>
+            <li><a href="/article/show/id">show <a/></li>
+        </ul>
+</ul> #}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/home">MySymfonyApp</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/lucky">Lucky <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/article" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Article
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/article/generate">Generate</a>
+          <a class="dropdown-item" href="/article/list">list</a>
+        </div>
+      </li>
+  </div>
+</nav>
