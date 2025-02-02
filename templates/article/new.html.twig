@@ -1,0 +1,44 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}Créer un Nouvel Article{% endblock %}
+
+{% block maincontent %}
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Créer un Article</h2>
+        </div>
+        <div class="card-body">
+            {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+            <div class="mb-3">
+                {{ form_label(form.titre, 'Titre', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.titre, {'attr': {'class': 'form-control', 'placeholder': 'Entrez un titre'}}) }}
+                {{ form_errors(form.titre) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.texte, 'Texte', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.texte, {'attr': {'class': 'form-control', 'rows': '5', 'placeholder': 'Entrez le contenu'}}) }}
+                {{ form_errors(form.texte) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.date, 'Date de publication', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.date) }}
+            </div>
+
+            <div class="mb-3 form-check">
+                {{ form_widget(form.publie, {'attr': {'class': 'form-check-input'}}) }}
+                {{ form_label(form.publie, 'Publié', {'label_attr': {'class': 'form-check-label'}}) }}
+            </div>
+
+            <button type="submit" class="btn btn-success">Créer</button>
+            <a href="/article/list" class="btn btn-secondary">Annuler</a>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

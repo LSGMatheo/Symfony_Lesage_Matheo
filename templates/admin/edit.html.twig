@@ -1,0 +1,36 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}Modifier un Utilisateur{% endblock %}
+
+{% block maincontent %}
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Modifier l'Utilisateur</h2>
+        </div>
+        <div class="card-body">
+            {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+            <!-- Email -->
+            <div class="mb-3">
+                {{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Entrez un email'}}) }}
+                {{ form_errors(form.email) }}
+            </div>
+
+            <!-- Rôles avec Select Multiple -->
+            <div class="mb-3">
+                {{ form_label(form.roles, 'Rôles', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.roles, {'attr': {'class': 'form-select', 'multiple': 'multiple', 'size': '3'}}) }}
+                {{ form_errors(form.roles) }}
+            </div>
+
+            <!-- Boutons -->
+            <button type="submit" class="btn btn-success">Enregistrer les modifications</button>
+            <a href="/admin/show/{{ user.id }}" class="btn btn-secondary">Annuler</a>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

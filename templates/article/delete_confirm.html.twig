@@ -1,31 +1,31 @@
 {% extends 'home.html.twig' %}
 
-{% block title %}Liste des Articles{% endblock %}
+{% block title %}Confirmation de Suppression{% endblock %}
 
 {% block maincontent %}
 <div class="container mt-5">
     <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white">
-            <h2 class="mb-0">Liste des Articles</h2>
+        <div class="card-header bg-danger text-white">
+            <h2 class="mb-0">Confirmation de Suppression</h2>
         </div>
         <div class="card-body">
+            <p>Êtes-vous sûr de vouloir supprimer l'article suivant ?</p>
             <table class="table table-striped table-bordered">
                 <thead class="table-dark">
                     <tr>
                         <th>ID</th>
                         <th>Titre</th>
+                        <th>Texte</th>
+                        <th>Date</th>
                         <th>Publié</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for article in articles %}
                     <tr>
-                        <td>
-                            <a href="/article/show/{{ article.id }}" class="btn btn-sm btn-outline-primary">
-                                {{ article.id }}
-                            </a>
-                        </td>
+                        <td>{{ article.id }}</td>
                         <td>{{ article.titre }}</td>
+                        <td>{{ article.texte }}</td>
+                        <td>{{ article.date|date('d/m/Y H:i') }}</td>
                         <td>
                             {% if (article.publie) %}
                                 {{ ux_icon('bi:check2-square') }}
@@ -34,9 +34,14 @@
                             {% endif %}
                         </td>
                     </tr>
-                    {% endfor %}
                 </tbody>    
             </table>
+        </div>
+        <div class="card-footer text-end">
+            <a href="/article/list" class="btn btn-secondary">Annuler</a>
+            <form action="/article/delete/{{ article.id }}" method="post" style="display: inline;">
+                <button type="submit" class="btn btn-danger">Confirmer la Suppression</button>
+            </form>
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 {% extends 'home.html.twig' %}
 
-{% block title %}Liste des Articles{% endblock %}
+{% block title %}Liste des Users{% endblock %}
 
 {% block maincontent %}
 <div class="container mt-5">
@@ -13,26 +13,22 @@
                 <thead class="table-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Titre</th>
-                        <th>Publié</th>
+                        <th>email</th>
+                        <th>Role</th>
+                        <th>Password</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for article in articles %}
+                    {% for aff_user in users %}
                     <tr>
                         <td>
-                            <a href="/article/show/{{ article.id }}" class="btn btn-sm btn-outline-primary">
-                                {{ article.id }}
+                            <a href="/admin/show/{{ aff_user.id }}" class="btn btn-sm btn-outline-primary">
+                                {{ aff_user.id }}
                             </a>
                         </td>
-                        <td>{{ article.titre }}</td>
-                        <td>
-                            {% if (article.publie) %}
-                                {{ ux_icon('bi:check2-square') }}
-                            {% else %}
-                                {{ ux_icon('bi:square') }}
-                            {% endif %}
-                        </td>
+                        <td>{{ aff_user.email }}</td>
+                        <td>{{ aff_user.roles|join(', ') }}</td>
+                        <td>{{ aff_user.password }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>    

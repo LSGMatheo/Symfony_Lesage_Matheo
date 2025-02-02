@@ -1,14 +1,48 @@
 {% extends 'home.html.twig' %}
 
-{% block title %}Hello ArticleController!{% endblock %}
+{% block title %}Détails de l'Article{% endblock %}
 
 {% block maincontent %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>SHOW</h1>
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Détails de l'Article</h2>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Titre</th>
+                        <th>Texte</th>
+                        <th>Date</th>
+                        <th>Publié</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ article.id }}</td>
+                        <td>{{ article.titre }}</td>
+                        <td>{{ article.texte }}</td>
+                        <td>{{ article.date|date('d/m/Y H:i') }}</td>
+                        <td>
+                            {% if (article.publie) %}
+                                {{ ux_icon('bi:check2-square') }}
+                            {% else %}
+                                {{ ux_icon('bi:square') }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>    
+            </table>
+        </div>
+        <div class="card-footer text-end">
+            <a href="/article/list" class="btn btn-secondary">Retour</a>
+            <a href="/article/edit/{{ article.id }}" class="btn btn-secondary">Modifier</a>
+            {% if is_granted('ROLE_ARTICLE_ADMIN') %}
+            <a href="/article/delete/{{ article.id }}" class="btn btn-secondary">Supprimer</a>
+            {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %}

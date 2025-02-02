@@ -1,0 +1,42 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}Détails de l'Article{% endblock %}
+
+{% block maincontent %}
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Détails du User</h2>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>email</th>
+                        <th>Role(s)</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+               <tbody>
+                    <tr>
+                        <td>
+                            <a href="/admin/show/{{ user.id }}" class="btn btn-sm btn-outline-primary">
+                                {{ user.id }}
+                            </a>
+                        </td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.roles|join(', ') }}</td>
+                        <td>{{ user.password }}</td>
+                    </tr>
+                </tbody>       
+            </table>
+        </div>
+        <div class="card-footer text-end">
+            <a href="/admin/users" class="btn btn-secondary">Retour</a>
+            <a href="/admin/edit/{{ user.id }}" class="btn btn-secondary">Modifier</a>
+            <a href="/admin/delete/{{ user.id }}" class="btn btn-secondary">Supprimer</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
